@@ -2,10 +2,10 @@
 
 /**
  * get_environ - function returns the string array copy of our environ
- * @info: (pointer)Structure containing potential arguments. Used to maintain
+ * @info: (pointer) Structure containing potential arguments. Used to maintain
  * constant function prototype.
- * Return: this returns always 0
- * getenv.c file simple_shell task
+ * getenv.cfile inthe simple_shell task
+ * Return: This function Always Returns 0
  */
 char **get_environ(info_t *info)
 {
@@ -17,81 +17,80 @@ char **get_environ(info_t *info)
 
 	return (info->environ);
 }
+
 /**
- * _unsetenv - function Removes an environment variable
- * @info: (pointer)Structure containing potential arguments. Used to maintain
+ * _unsetenv - function Remove an environment variable
+ * @info: (pointer) Structure containing potential arguments. Used to maintain
  * constant function prototype.
- * Return: returns 1 on delete, 0 otherwise
- * getenv.c file simple shell tesk
- * @var: (char pointer)the string env var property
+ * getenv.cfile inthe simple_shell task
+ * Return: This Returns 1 on delete, 0 otherwise
+ * @var: (pointer) the string env var property
  */
 int _unsetenv(info_t *info, char *var)
 {
-	list_t *nodelst_tvariable = info->env;
-	size_t isze_tvarble = 0;
-	char *pcharvarble;
+	list_t *nodevarbel = info->env;
+	size_t ivarbel = 0;
+	char *pvarbel;
 
-	if (!nodelst_tvariable || !var)
+	if (!nodevarbel || !var)
 		return (0);
 
-	while (nodelst_tvariable)
+	while (nodevarbel)
 	{
-		pcharvarble = starts_with(nodelst_tvariable->str, var);
-		if (pcharvarble && *pcharvarble == '=')
+		pvarbel = starts_with(nodevarbel->str, var);
+		if (pvarbel && *pvarbel == '=')
 		{
-			info->env_changed = delete_node_at_index(&(info->env), isze_tvarble);
-			isze_tvarble = 0;
-			nodelst_tvariable = info->env;
+			info->env_changed = delete_node_at_index(&(info->env), ivarbel);
+			ivarbel = 0;
+			nodevarbel = info->env;
 			continue;
 		}
-		nodelst_tvariable = nodelst_tvariable->next;
-		isze_tvarble++;
+		nodevarbel = nodevarbel->next;
+		ivarbel++;
 	}
 	return (info->env_changed);
 }
+
 /**
- * _setenv - function initializes a new environment variable,
- * or modifies an existing one
- * @info: (pointer)Structure containing potential arguments. Used to maintain
+ * _setenv - function Initialize a new environment variable,
+ * or modify an existing one
+ * @info: (pointer) Structure containing potential arguments. Used to maintain
  * constant function prototype.
- * @var: (char pointer)string env var property
- * @value: (char pointer)string env var value
- * getenv.c file in simple shell task
- *  Return: this returns always 0
+ * getenv.cfile inthe simple_shell task
+ * @var: (pointer) the string env var property
+ * @value: (pointer) the string env var value
+ *  Return: This function Always returns 0
  */
 int _setenv(info_t *info, char *var, char *value)
 {
-	char *bufcharvarble = NULL;
-	list_t *nodelst_tvarble;
-	char *pcharvarble;
+	char *bufvarbel = NULL;
+	list_t *nodevarbel;
+	char *pvarbel;
 
 	if (!var || !value)
 		return (0);
 
-	bufcharvarble = malloc(_strlen(var) + _strlen(value) + 2);
-
-	if (!bufcharvarble)
+	bufvarbel = malloc(_strlen(var) + _strlen(value) + 2);
+	if (!bufvarbel)
 		return (1);
-
-	_strcpy(bufcharvarble, var);
-	_strcat(bufcharvarble, "=");
-	_strcat(bufcharvarble, value);
-	nodelst_tvarble = info->env;
-	while (nodelst_tvarble)
+	_strcpy(bufvarbel, var);
+	_strcat(bufvarbel, "=");
+	_strcat(bufvarbel, value);
+	nodevarbel = info->env;
+	while (nodevarbel)
 	{
-		pcharvarble = starts_with(nodelst_tvarble->str, var);
-		if (pcharvarble && *pcharvarble == '=')
+		pvarbel = starts_with(nodevarbel->str, var);
+		if (pvarbel && *pvarbel == '=')
 		{
-			free(nodelst_tvarble->str);
-			nodelst_tvarble->str = bufcharvarble;
+			free(nodevarbel->str);
+			nodevarbel->str = bufvarbel;
 			info->env_changed = 1;
 			return (0);
 		}
-		nodelst_tvarble = nodelst_tvarble->next;
+		nodevarbel = nodevarbel->next;
 	}
-	add_node_end(&(info->env), bufcharvarble, 0);
-	free(bufcharvarble);
+	add_node_end(&(info->env), bufvarbel, 0);
+	free(bufvarbel);
 	info->env_changed = 1;
-
 	return (0);
 }

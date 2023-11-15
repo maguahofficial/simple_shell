@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * interactive - function that returns if shell is interactive mode
- * @info: struct address
- *_atoi.c file in 0x16 simple shell
+ * interactive - function returns true if shell is interactive mode
+ * @info: (pointer) struct address
+ * _atoi.c file in simple shell
  * Return: 1 if interactive mode, 0 otherwise
  */
 int interactive(info_t *info)
@@ -13,23 +13,22 @@ int interactive(info_t *info)
 
 /**
  * is_delim - function checks if character is a delimeter
- * @c: The char to check
- * @delim: variable .the delimeter string
- * Return:  returns 1 if true, 0 if false
+ * @c: (char variable) the char to check
+ * @delim: (pointer) the delimeter string
+ * Return: returnns 1 if true, 0 if false
  */
 int is_delim(char c, char *delim)
 {
 	while (*delim)
 		if (*delim++ == c)
 			return (1);
-
 	return (0);
 }
 
 /**
- * _isalpha - function checks for alphabetic character
- * @c: character to input
- * Return: return 1 if c is alphabetic, 0 otherwise
+ *_isalpha - function checks for alphabetic character
+ *@c: (int variable) The character to input
+ *Return: returns 1 if c is alphabetic, 0 otherwise
  */
 
 int _isalpha(int c)
@@ -41,36 +40,35 @@ int _isalpha(int c)
 }
 
 /**
- * _atoi - function converts a string to an integer
- * @s: string to be converted
- * Return: return 0 if no numbers in string, converted number otherwise
+ *_atoi - function converts a string to an integer
+ *@s: (pointer) the string to be converted
+ *Return:returns  0 if no numbers in string, converted number otherwise
  */
 
 int _atoi(char *s)
 {
-	int ivarble, signintvarble = 1, flagintvarble = 0, outputintvarble;
-	unsigned int resultunintvarb = 0;
+	int ivariable, signvariable = 1, flagvariable = 0, outputvariable;
+	unsigned int resultvariable = 0;
 
-	for (ivarble = 0; s[ivarble] != '\0' && flagintvarble != 2; ivarble++)
+	for (ivariable = 0;  s[ivariable] != '\0' && flagvariable != 2; ivariable++)
 	{
-		if (s[ivarble] == '-')
-			signintvarble *= -1;
+		if (s[ivariable] == '-')
+			signvariable *= -1;
 
-		if (s[ivarble] >= '0' && s[ivarble] <= '9')
+		if (s[ivariable] >= '0' && s[ivariable] <= '9')
 		{
-			flagintvarble = 1;
-			resultunintvarb *= 10;
-			resultunintvarb += (s[ivarble] - '0');
+			flagvariable = 1;
+			resultvariable *= 10;
+			resultvariable += (s[ivariable] - '0');
 		}
-		else if (flagintvarble == 1)
-			flagintvarble = 2;
+		else if (flagvariable == 1)
+			flagvariable = 2;
 	}
 
-	if (signintvarble == -1)
-		outputintvarble = -resultunintvarb;
-
+	if (signvariable == -1)
+		outputvariable = -resultvariable;
 	else
-		outputintvarble = resultunintvarb;
+		outputvariable = resultvariable;
 
-	return (outputintvarble);
+	return (outputvariable);
 }

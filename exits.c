@@ -1,16 +1,17 @@
 #include "shell.h"
 
 /**
- **_strncpy - this function copies a string
- *@dest: (char variable)the destination string to be copied to
- *@src: (char variable)source string
- *@n: (int variable)amount of characters to be copied
- *Return: this returns the concatenated string
+ **_strncpy - function copies a string
+ *@dest: (pointer) the destination string to be copied to
+ *@src: (pointer) the source string
+ *@n: (int variable) the amount of characters to be copied
+ *Return: This Returns the concatenated string
+ *exits.c file in the simple_shell task
  */
 char *_strncpy(char *dest, char *src, int n)
 {
-	int ivarble, jintvarble;
-	char *s = dest;
+	int ivarble, jvarble;
+	char *svarble = dest;
 
 	ivarble = 0;
 	while (src[ivarble] != '\0' && ivarble < n - 1)
@@ -20,48 +21,50 @@ char *_strncpy(char *dest, char *src, int n)
 	}
 	if (ivarble < n)
 	{
-		jintvarble = ivarble;
-		while (jintvarble < n)
+		jvarble = ivarble;
+		while (jvarble < n)
 		{
-			dest[jintvarble] = '\0';
-			jintvarble++;
+			dest[jvarble] = '\0';
+			jvarble++;
 		}
 	}
-	return (s);
+	return (svarble);
 }
 
 /**
  **_strncat - function concatenates two strings
- *@dest: (char variable)the first string
- *@src: (char variable)the second string
- *@n: (int variable)amount of bytes to be maximally used
- *Return: this returns the concatenated string
+ *@dest: (pointer) the first string
+ *@src: (pointer) the second string
+ *@n: (int variable) the amount of bytes to be maximally used
+ *Return: This returns the concatenated string
+ *exits.c file in the simple_shell task
  */
 char *_strncat(char *dest, char *src, int n)
 {
-	int iintvariable, jintvariable;
-	char *scharvariable = dest;
+	int ivarble, jvarble;
+	char *svarble = dest;
 
-	iintvariable = 0;
-	jintvariable = 0;
-	while (dest[iintvariable] != '\0')
-		iintvariable++;
-
-	while (src[jintvariable] != '\0' && jintvariable < n)
+	ivarble = 0;
+	jvarble = 0;
+	while (dest[ivarble] != '\0')
+		ivarble++;
+	while (src[jvarble] != '\0' && jvarble < n)
 	{
-		dest[iintvariable] = src[jintvariable];
-		iintvariable++;
-		jintvariable++;
+		dest[ivarble] = src[jvarble];
+		ivarble++;
+		jvarble++;
 	}
-	if (jintvariable < n)
-		dest[iintvariable] = '\0';
-	return (scharvariable);
+	if (jvarble < n)
+		dest[ivarble] = '\0';
+	return (svarble);
 }
+
 /**
  **_strchr - function locates a character in a string
- *@s: (char array variable)the string to be parsed
- *@c: (char variable)the character to look for
- *Return: (s) pointer to the memory area s
+ *@s: (pointer) the string to be parsed
+ *@c: (char variable) the character to look for
+ *Return: This Returns (s) a pointer to the memory area s
+ *exits.c file in the simple_shell task
  */
 char *_strchr(char *s, char c)
 {

@@ -1,8 +1,9 @@
 #include "shell.h"
+
 /**
  * clear_info - function initializes info_t struct
- * @info: (pointer)struct address
- * getinfo.c file in simple_shell task
+ * @info: (pointer) struct address
+ * getinfo.c file in thesimple_shell task
  */
 void clear_info(info_t *info)
 {
@@ -11,23 +12,24 @@ void clear_info(info_t *info)
 	info->path = NULL;
 	info->argc = 0;
 }
+
 /**
  * set_info - function initializes info_t struct
- * @info: (pointer)struct address
- * @av: (char double pointer)argument vector
- * getinfo.c file in simple_shell task
+ * @info: (pointer) struct address
+ * @av: (double pointer) argument vector
+ * getinfo.c file in thesimple_shell task
  */
 void set_info(info_t *info, char **av)
 {
-	int iintvariable = 0;
+	int ivarble = 0;
 
 	info->fname = av[0];
-
 	if (info->arg)
 	{
 		info->argv = strtow(info->arg, " \t");
 		if (!info->argv)
 		{
+
 			info->argv = malloc(sizeof(char *) * 2);
 			if (info->argv)
 			{
@@ -35,19 +37,20 @@ void set_info(info_t *info, char **av)
 				info->argv[1] = NULL;
 			}
 		}
-
-		for (iintvariable = 0; info->argv && info->argv[i]; iintvariable++)
+		for (ivarble = 0; info->argv && info->argv[ivarble]; ivarble++)
 			;
-		info->argc = iintvariable;
+		info->argc = ivarble;
+
 		replace_alias(info);
 		replace_vars(info);
 	}
 }
+
 /**
  * free_info - function frees info_t struct fields
- * @info: (pointer)struct address
- * @all: (int variable)true if freeing all fields
- * getinfo.c file in simple_shell task
+ * @info: (pointer) struct address
+ * @all: (int variable) true if freeing all fields
+ * getinfo.c file in thesimple_shell task
  */
 void free_info(info_t *info, int all)
 {
@@ -58,20 +61,15 @@ void free_info(info_t *info, int all)
 	{
 		if (!info->cmd_buf)
 			free(info->arg);
-
 		if (info->env)
 			free_list(&(info->env));
-
 		if (info->history)
 			free_list(&(info->history));
-
 		if (info->alias)
 			free_list(&(info->alias));
-
 		ffree(info->environ);
-		info->environ = NULL;
+			info->environ = NULL;
 		bfree((void **)info->cmd_buf);
-
 		if (info->readfd > 2)
 			close(info->readfd);
 		_putchar(BUF_FLUSH);
