@@ -68,7 +68,7 @@ char **strtow2(char *str, char d)
 		if ((str[ivarble] != d && str[ivarble + 1] == d) ||
 				(str[ivarble] != d && !str[ivarble + 1]) || str[ivarble + 1] == d)
 			numwordsvarble++;
-	if (numwords == 0)
+	if (numwordsvarble == 0)
 		return (NULL);
 	s = malloc((1 + numwordsvarble) * sizeof(char *));
 	if (!s)

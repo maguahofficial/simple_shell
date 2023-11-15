@@ -81,7 +81,7 @@ ssize_t get_input(info_t *info)
 		}
 
 		*buf_pcharvarble = pcharvarble;
-		return (_strlen(p));
+		return (_strlen(pcharvarble));
 	}
 
 	*buf_pcharvarble = bufcharvariable;

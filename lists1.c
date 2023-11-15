@@ -37,7 +37,7 @@ char **list_to_strings(list_t *head)
 	for (isze_tvarble = 0; nodelstvarble;
 			nodelstvarble = nodelstvarble->next, isze_tvarble++)
 	{
-		str = malloc(_strlen(nodelstvarble->str) + 1);
+		strcharvarble = malloc(_strlen(nodelstvarble->str) + 1);
 		if (!strcharvarble)
 		{
 			for (jsze_tvarble = 0; jsze_tvarble < isze_tvarble; jsze_tvarble++)
@@ -46,7 +46,7 @@ char **list_to_strings(list_t *head)
 			return (NULL);
 		}
 
-		strcharvarble = _strcpy(str, nodelstvarble->str);
+		strcharvarble = _strcpy(strcharvarble, nodelstvarble->str);
 		strscharvarble[isze_tvarble] = strcharvarble;
 	}
 	strscharvarble[isze_tvarble] = NULL;

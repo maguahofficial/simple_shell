@@ -74,7 +74,7 @@ int read_history(info_t *info)
 
 	if (!filenamevarble)
 		return (0);
-	fdsszevarble = open(filename, O_RDONLY);
+	fdsszevarble = open(filenamevarble, O_RDONLY);
 	free(filenamevarble);
 	if (fdsszevarble == -1)
 		return (0);
@@ -86,7 +86,7 @@ int read_history(info_t *info)
 	if (!bufvarble)
 		return (0);
 	rdlensszevarble = read(fdsszevarble, bufvarble, fsizesszevarble);
-	buf[fsizesszevarble] = 0;
+	bufvarble[fsizesszevarble] = 0;
 	if (rdlensszevarble <= 0)
 		return (free(bufvarble), 0);
 	close(fdsszevarble);
